@@ -66,9 +66,9 @@
 				// If the mock was registered with a function, let the function decide if we
 				// want to mock this request
 				if ( $.isFunction(mockHandlers[k]) ) {
-					m = mockHandlers[k](s);
+					m = $.extend(true, {}, mockHandlers[k](s));
 				} else {
-					m = mockHandlers[k];
+					m = $.extend(true, {}, mockHandlers[k]);
 					// Inspect the URL of the request and check if the mock handler's url
 					// matches the url for this ajax request
 					if ( $.isFunction(m.url.test) ) {
